@@ -3,7 +3,8 @@
 
 
 // element toggle function
-const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
+const elementToggleFunc = function (elem) { 
+  elem.classList.toggle("active"); }
 
 
 
@@ -84,7 +85,7 @@ const filterFunc = function (selectedValue) {
 
     if (selectedValue === "all") {
       filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
+    } else if (selectedValue === filterItems[i].dataset.category.toLowerCase()) {
       filterItems[i].classList.add("active");
     } else {
       filterItems[i].classList.remove("active");
