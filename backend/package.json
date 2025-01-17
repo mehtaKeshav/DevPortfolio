@@ -1,0 +1,25 @@
+{
+  "name": "portfolio_backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mehtaKeshav/DevPortfolio.git"
+  },
+  "author": "Keshav Mehta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mehtaKeshav/DevPortfolio/issues"
+  },
+  "homepage": "https://github.com/mehtaKeshav/DevPortfolio#readme",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "nodemailer": "^6.9.16"
+  }
+}

@@ -332,7 +332,8 @@ main {
 }
 
 .avatar-box {
-  background: var(--bg-gradient-onyx);
+  /* background: var(--bg-gradient-onyx); */
+  background: #2C2C2E;
   border-radius: 20px;
 }
 
@@ -1334,7 +1335,7 @@ textarea.form-input::-webkit-resizer { display: none; }
    */
 
   .sidebar {
-    max-height: 180px;
+    max-height: 200px;
     margin-bottom: 30px;
   }
 
@@ -1342,7 +1343,23 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .sidebar-info { gap: 25px; }
 
-  .avatar-box { border-radius: 30px; }
+  /* .avatar-box { border-radius: 30px; } */
+  .carousel {
+    width: 120px; /* Width of a single image */
+    overflow: hidden; /* Hide overflow */
+    border-radius: 30px;
+  }
+  
+  .carousel-slides {
+    display: flex; /* Align images in a row */
+    transition: transform 0.5s ease-in-out; /* Smooth slide transition */
+    will-change: transform; /* Optimize performance */
+  }
+  
+  .carousel-slides img {
+    width: 100%; /* Images take up the full container width */
+    flex-shrink: 0; /* Prevent shrinking */
+  }
 
   .avatar-box img { width: 120px; }
 

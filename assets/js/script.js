@@ -1,6 +1,40 @@
 'use strict';
 
 
+const slidesContainer = document.querySelector('.carousel-slides'); // The slides wrapper
+const slides = document.querySelectorAll('.carousel-slides img'); // All images in the carousel
+const totalSlides = slides.length;
+const slideWidth = slides[0].clientWidth; // Get the width of a single slide
+console.log(slideWidth)
+let currentIndex = 1; // Start at the first "real" image
+
+// Set the initial position
+slidesContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
+
+// Function to move the slides
+function moveSlides() {
+  currentIndex++; // Move to the next slide
+  slidesContainer.style.transition = 'transform 1s ease-in-out'; // Smooth transition
+  slidesContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
+
+  // Handle looping: reset position when reaching the duplicates
+  slidesContainer.addEventListener('transitionend', () => {
+    if (currentIndex === totalSlides - 1) {
+      currentIndex = 1; // Reset to the first "real" slide
+      slidesContainer.style.transition = 'none'; // Remove transition for instant jump
+      slidesContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
+    } else if (currentIndex === 0) {
+      currentIndex = totalSlides - 2; // Reset to the last "real" slide
+      slidesContainer.style.transition = 'none'; // Remove transition for instant jump
+      slidesContainer.style.transform = `translateX(${-slideWidth * currentIndex}px)`;
+    }
+  });
+}
+
+// Automatically move the slides every 2 seconds
+setInterval(moveSlides, 3000);
+
+
 
 // element toggle function
 const elementToggleFunc = function (elem) { 
