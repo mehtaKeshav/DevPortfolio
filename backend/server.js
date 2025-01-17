@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const bodyParser = require('body-parser');
 //route files
 const contactRoute = require('./routes/contact')
 
@@ -17,12 +18,14 @@ app.get('/', (req, res) =>{
 // use Cors 
 app.use(cors(corsOptions))
 
+// use bodyparser for processing JSON
+app.use(bodyParser.json());
 // routes
 app.use('/Contact', contactRoute)
 
 
 
-const port = 3000 || process.env.PORT
+const port = 3000 || process.env.HTTP_PORT
 app.listen(port, () =>{
     console.log(`Server Running 😁 on port ${port} `)
 })
