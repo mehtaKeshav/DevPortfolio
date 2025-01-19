@@ -192,3 +192,39 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+
+// sending form data to backend 
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault()
+
+  console.log("Bhaw Bhaw")
+
+  const formData = {
+    fullname: form.querySelector('input[name=fullname]').value,
+    email: form.querySelector('input[name=email]').value,
+    message: form.querySelector('textarea[name=message]').value
+  }
+  console.log(JSON.stringify(formData))
+
+  fetch('http://localhost:3000/contact/sendemail', {
+    method: 'post',
+    headers:{
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(
+      formData
+    )
+  }).then(
+    data =>{
+      alert('Your message has been sent successfully');
+      form.reset()
+      formBtn.setAttribute("disabled", "")
+    }
+  )
+  .catch(error =>{
+    console.error('Error:', error);
+    alert('There was a problem sending your message.')
+  })
+} )

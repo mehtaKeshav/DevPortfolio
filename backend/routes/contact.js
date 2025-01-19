@@ -6,7 +6,7 @@ router.get('/', (req, res) =>{
     res.send('<h1>This is Contacts</h1>')
 })
 
-router.post('/SendEmail', sendEmail)
+router.post('/Sendemail', sendEmail)
 
 
 module.exports = router

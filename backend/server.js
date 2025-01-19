@@ -21,7 +21,7 @@ app.use(cors(corsOptions))
 // use bodyparser for processing JSON
 app.use(bodyParser.json());
 // routes
-app.use('/Contact', contactRoute)
+app.use('/contact', contactRoute)
 
 
 

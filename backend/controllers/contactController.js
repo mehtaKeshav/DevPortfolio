@@ -34,10 +34,10 @@ const transporter = nodemailer.createTransport({
 })
 const sendEmail = async (req, res) =>{
     try{
-        console.log(req)
-        const {fullName, email, message} = req.body
-
-        if (!fullName || !email || !message){
+        // console.log(req)
+        const {fullname, email, message} = req.body
+        console.log(fullname, "  ",  email, "  ", message)
+        if (!fullname || !email || !message){
             return res.status(400).json({status: 'error', message: 'Missing required Fields'})
         }
         // Message Sanitization (converting it into plain HTML if there is)
@@ -47,8 +47,8 @@ const sendEmail = async (req, res) =>{
         const mailOptions = {
             from: email,
             to: process.env.EMAIL_ID,
-            text: `Name: ${fullName}\nEmail: ${email}\n${sanitizedMessage}`,
-            subject: `🚀NEW CONNECT🚀:- ${fullName}</h1>`
+            text: `Name: ${fullname}\nEmail: ${email}\n${sanitizedMessage}`,
+            subject: `🚀NEW CONNECT🚀:- ${fullname}</h1>`
         }
 
         const info = await transporter.sendMail(mailOptions)
