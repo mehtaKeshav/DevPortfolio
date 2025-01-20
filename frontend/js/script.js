@@ -207,7 +207,7 @@ form.addEventListener('submit', (event) => {
     message: form.querySelector('textarea[name=message]').value
   }
   console.log(JSON.stringify(formData))
-  const apiUrl = window.ENV.API_BASE_URL
+  const apiUrl = window.ENV.API_BASE_URL || 'http://localhost:3000/'
   console.log(apiUrl)
   fetch(`${apiUrl}contact/sendemail`, {
     method: 'post',
