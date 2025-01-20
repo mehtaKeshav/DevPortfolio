@@ -1,0 +1,31 @@
+name: Deploy Backend to Heroku
+
+# Trigger the workflow only on pushes to master when files in the backend folder change
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'backend/**' # Watch for changes in the backend folder
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up the Heroku CLI
+    - name: Set up Heroku CLI
+      run: |
+        curl https://cli-assets.heroku.com/install.sh | sh
+
+    # Step 3: Deploy the backend subtree to Heroku
+    - name: Deploy Backend
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+      run: |
+        git subtree push --prefix backend https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
