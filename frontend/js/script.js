@@ -195,10 +195,10 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
 
 // sending form data to backend 
-
+// const apiUrl = window.ENV.API_BASE_URL;
+// console.log("Hello: ", apiUrl)
 form.addEventListener('submit', (event) => {
   event.preventDefault()
-
   console.log("Bhaw Bhaw")
 
   const formData = {
@@ -207,8 +207,9 @@ form.addEventListener('submit', (event) => {
     message: form.querySelector('textarea[name=message]').value
   }
   console.log(JSON.stringify(formData))
-
-  fetch('http://localhost:3000/contact/sendemail', {
+  const apiUrl = window.ENV.API_BASE_URL
+  console.log(apiUrl)
+  fetch(`${apiUrl}contact/sendemail`, {
     method: 'post',
     headers:{
       'Content-Type': 'application/json',
