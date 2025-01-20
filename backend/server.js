@@ -12,7 +12,7 @@ const corsOptions = {
 
 const app = express()
 app.get('/', (req, res) =>{
-    res.send('<h1>Hello, Express.JS Server!</h1>')
+    res.send('<h1>Hello, This is Server for https://mehtakeshav.github.io/</h1>')
 })
 
 // use Cors 
